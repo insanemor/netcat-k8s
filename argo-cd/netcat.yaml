@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: netcat
+  namespace: argocd
+spec:
+  destination:
+    namespace: projeto
+    server: 'https://kubernetes.default.svc'
+  project: default
+  revisionHistoryLimit: 1
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+  source:
+    repoURL: https://github.com/insanemor/netcat-k8s
+    path: charts/netcat
+    helm:
+      valueFiles:
+      - ../../charts/values.yaml    

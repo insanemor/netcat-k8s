@@ -1,0 +1,8 @@
+replicas: 1
+
+app:
+  name: netcat
+
+container:
+  tag: latest
+  port: 9001
