@@ -1,0 +1,12 @@
+FROM ubuntu:latest
+
+RUN apt update
+RUN apt install netcat-openbsd net-tools iproute2 -y 
+
+WORKDIR /app
+
+COPY . .
+
+CMD ["/bin/bash", "script/multiport-netcat.sh"]
+
+EXPOSE 5000
