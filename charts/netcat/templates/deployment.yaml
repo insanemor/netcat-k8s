@@ -20,7 +20,6 @@ spec:
     metadata:
       labels:
         app: {{ .Values.app.name }}
-        name: {{ .Values.app.name }}
     spec:
       containers:
         - name: {{ .Values.app.name }}
