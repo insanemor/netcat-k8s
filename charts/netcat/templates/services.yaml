@@ -12,8 +12,10 @@ spec:
   # clusterIp: None
   selector: 
     app: {{ .Values.app.name }}
+  
   ports:
-  - name: {{ .Values.app.name }}-listener
+  {{- range .Values.ports }}
+  - name: {{ .Values.app.name }}-{{ .port }}
     protocol: TCP
-    port: 26500
-    nodePort: 30250
+    port: {{ .port }}
+  {{- end }}

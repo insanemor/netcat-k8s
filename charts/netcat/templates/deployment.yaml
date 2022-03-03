@@ -22,7 +22,17 @@ spec:
         app: {{ .Values.app.name }}
     spec:
       containers:
-        - name: {{ .Values.app.name }}
-          image: insanemor/netcat:{{ .Values.container.tag }}
-          ports:
-          - containerPort: 26500 
+      - name: {{ .Values.app.name }}
+        image: insanemor/netcat:{{ .Values.container.tag }}
+        ports:
+        {{- range .Values.ports }}
+        - containerPort: {{ .port }}
+        {{- end }}
+        volumeMounts:
+        - name: ports.ini
+          mountPath: /app/script/ports.ini
+      volumes:
+      - name: ports.ini
+        configMap:
+          defaultMode: 0600
+          name: {{ .Values.app.name }} 
