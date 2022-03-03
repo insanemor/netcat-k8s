@@ -30,9 +30,10 @@ spec:
         {{- end }}
         volumeMounts:
         - name: ports
-          mountPath: /app/script/ports.ini
+          readOnly: true
+          mountPath: /app/script/
       volumes:
       - name: ports
         configMap:
-          defaultMode: 0600
+          defaultMode: 420
           name: {{ .Values.app.name }} 
