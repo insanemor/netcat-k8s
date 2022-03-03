@@ -26,7 +26,8 @@ spec:
         image: insanemor/netcat:{{ .Values.container.tag }}
         ports:
         {{- range .Values.ports }}
-        - containerPort: {{ .port }}
+        - name: port{{ .port }}
+          containerPort: {{ .port }}
         {{- end }}
         volumeMounts:
         - name: ports

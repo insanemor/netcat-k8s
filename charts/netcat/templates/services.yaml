@@ -18,4 +18,5 @@ spec:
   - name: port-{{ .port }}
     protocol: TCP
     port: {{ .port }}
+    targetPort: {{ .port }}
   {{- end }}
