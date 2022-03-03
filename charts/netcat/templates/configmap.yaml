@@ -3,7 +3,4 @@ kind: ConfigMap
   name: {{ .Values.app.name }}
   namespace: projeto
 data:
-  ports: |
-    {{- range .Values.ports }}
-        {{ .port }}
-    {{- end }}
+  ports: {{- join "," .Values.ports }}
