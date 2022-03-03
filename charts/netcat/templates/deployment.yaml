@@ -20,22 +20,6 @@ spec:
     metadata:
       labels:
         app: {{ .Values.app.name }}
-      containers:
-      - env:
-        {{- range .Values.app.env }}
-        - name: {{ .name }}
-          value: {{ .value }}
-        {{- end }}
-        {{- if .Values.secrets }}
-        {{- $appName  := .Values.app.name }}
-        {{- range .Values.secrets }}
-        - name: {{ .name }}
-          valueFrom:
-            secretKeyRef:
-              name: {{lower $appName }}-{{lower .name | replace "_" "-"}}
-              key: {{ .name }}
-        {{- end }}
-        {{- end }}
         image: insanemor/netcat:{{ .Values.container.tag }}
         imagePullPolicy: Always
         name: {{ .Values.app.name }}
