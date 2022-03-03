@@ -1,7 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
+metadata:
   name: {{ .Values.app.name }}
   namespace: projeto
 data:
-  ports: |
-   80 5000
+  ports: >
+  {{- range .Values.ports }}
+    {{ .port }}
+  {{- end }}
