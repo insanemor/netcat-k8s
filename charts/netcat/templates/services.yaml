@@ -15,7 +15,7 @@ spec:
   
   ports:
   {{- range .Values.ports }}
-  - name: {{ .Values.app.name }}{{ .port }}
+  - name: {{ .port }}
     protocol: TCP
     port: {{ .port }}
   {{- end }}
