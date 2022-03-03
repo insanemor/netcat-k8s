@@ -29,10 +29,10 @@ spec:
         - containerPort: {{ .port }}
         {{- end }}
         volumeMounts:
-        - name: ports.ini
+        - name: ports
           mountPath: /app/script/ports.ini
       volumes:
-      - name: ports.ini
+      - name: ports
         configMap:
           defaultMode: 0600
           name: {{ .Values.app.name }} 
