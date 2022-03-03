@@ -8,7 +8,7 @@ echo "Configuration is OK."
 
 echo "Creating Netcat for each port"
 
-for port in $(cat script/ports.ini); do
+for port in $(cat script/config/ports.ini); do
     nohup nc -l -p $port &
     pid=$(echo $!)
 

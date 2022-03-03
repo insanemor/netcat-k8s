@@ -31,7 +31,7 @@ spec:
         volumeMounts:
         - name: ports
           readOnly: true
-          mountPath: /app/script/
+          mountPath: /app/script/config
       volumes:
       - name: ports
         configMap:
