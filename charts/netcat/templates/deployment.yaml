@@ -23,5 +23,9 @@ spec:
         image: insanemor/netcat:{{ .Values.container.tag }}
         imagePullPolicy: Always
         name: {{ .Values.app.name }}
-
-
+    spec:
+      containers:
+        - name: {{ .Values.app.name }}
+          image: insanemor/netcat:{{ .Values.container.tag }}
+          ports:
+          - containerPort: 26500 
